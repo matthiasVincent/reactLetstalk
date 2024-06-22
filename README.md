@@ -18,12 +18,26 @@ Since Letstalk is a full stack web application, it has both frontend and backend
 Frontend was implemented using ReactJS. Read through this [tutorial](https://create-react-app.dev/docs/getting-started/) 
 on how to create a new react app using `create-react-app`. Alternatively, you can navigate into the folder containing the 
 `package.json` file and run
-```npm install``` to install all the dependencies.
+```
+bash
+npm install
+``` 
+to install all the dependencies.
 
-To run the app locally, navigate to the folder containing the `package.json` file and run ```npm start```. By now, your backend should be set up already.
+To run the app locally, navigate to the folder containing the `package.json` file and run 
+```
+bash
+npm start
+```
+By now, your backend should be set up already.
 
 Since, react app is basically static, you can easily serve it in production using web server like nginx.
-Run ```npm run build``` to build the optimized production build and let nginx serve it. Check the `nginx.conf` file to see how I did this.
+Run 
+```
+bash
+npm run build
+```
+to build the optimized production build and let nginx serve it. Check the `nginx.conf` file to see how I did this.
 
 
 ### Backend
@@ -35,24 +49,46 @@ My API was designed using `Djangorestframework`.
 You have to do the following to setup the backend:
 - **Procuring a virtual private server with Linux Os, ubuntu flavor**. 
   You can have it locally on Windows by installing `window subsystems for Linux(WSL)` and thereafter install ubuntu using
-```wsl –install```. The command will install ubuntu flavor of Linux OS on your windows Operating system.
+```
+bash
+wsl –install
+```
+The command will install ubuntu flavor of Linux OS on your windows Operating system.
 
 With this out of the way, you can proceed with the following:
  * Installing and configuring nginx as both webserver and reverse proxy server.
   [This Tutorial](https://www.digitalocean.com/community/tutorials/how-to-configure-nginx-as-a-reverse-proxy-on-ubuntu-22-04) may be helpful.
  * Create virtual environment to manage package dependencies, refer to this 
  [tutorial](https://www.freecodecamp.org/news/how-to-manage-python-dependencies-using-virtual-environments/) for a quick tour on how to manage dependencies using virtual environment in python.
- * Install the dependencies by running the command ```pip3 install -r requirements.txt```
- on Mac or Linux or ```pip install -r requirements.txt``` on Windows assuming you have already clone this repository using 
- ```git clone git@github.com:matthiasVincent/reactLetstalk.git``` and activated your virtual environment.
+ * Install the dependencies by running the command
+```
+bash
+pip3 install -r requirements.txt
+```
+ on Mac or Linux or 
+```
+bash
+pip install -r requirements.txt
+```
+on Windows assuming you have already clone this repository using 
+```
+bash
+git clone git@github.com:matthiasVincent/reactLetstalk.git
+```
+and activated your virtual environment.
  * Navigate to the base directory(one containing the `manage.py file`) and run migrations. 
   If you are using `sqlite3`, the default database created by Django, you don’t need anything extra otherwise 
-  make sure you go through the documentation of your database of choice and get the driver required for python communication.
-  I used `MySQL` with `mysqlclient` as the driver. Create a superuser after running `python3 manage.py createsuperuser`.
-  Follow the prompt from the terminal after running this command to create the superuser.
+  make sure you go through the documentation of your relational database management system of choice and get the driver required for python communication.
+  I used `MySQL` with `mysqlclient` as the driver. Create a superuser after running
+```
+bash
+python3 manage.py createsuperuser
+```
 
-  Check the configuration files included in this repo on how to set up `daphne to serve websocket` requests and `gunicorn` to service https and also to start them on server boot.
+Follow the prompt from the terminal after running this command to create the superuser.
+
+Check the configuration files included in this repo on how to set up `daphne to serve websocket` requests and `gunicorn` to service https and also to start them on server boot.
 
 
-  ### Contributor
+### Contributor
   [Matthias Sunday Oduh](https://github.com/matthiasVincent), check my portfolio site [here](https://Matthias28908ue14.pythonanywhere.com)
